@@ -32,22 +32,13 @@ type Props = {
 
 const Admin: React.FC<Props> = props => {
   // used for checking current route
-  const router = useRouter();
   const [session] = useSession();
-  const mainContentRef = React.createRef();
+  const mainContentRef = React.createRef<HTMLDivElement>();
   React.useEffect(() => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     mainContentRef.current.scrollTop = 0;
   }, []);
-  const getBrandText = () => {
-    for (let i = 0; i < routes.length; i++) {
-      if (router.route.indexOf(routes[i].layout + routes[i].path) !== -1) {
-        return routes[i].name;
-      }
-    }
-    return 'Brand';
-  };
 
   return (
     <>
@@ -63,7 +54,7 @@ const Admin: React.FC<Props> = props => {
         />
       )}
       <div className="main-content" ref={mainContentRef}>
-        <AdminNavbar {...props} brandText={getBrandText()} />
+        <AdminNavbar {...props} />
         {props.children}
         <Container fluid>
           <AdminFooter />
