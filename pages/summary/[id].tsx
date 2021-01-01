@@ -5,7 +5,7 @@ import Layout from '../../components/Layout';
 import Router from 'next/router';
 import { PostProps } from '../../components/Post';
 import prisma from '../../lib/prisma';
-import { useSession } from 'next-auth/client';
+import { getSession, useSession } from 'next-auth/client';
 import SummaryHeader from '../../components/Headers/SummaryHeader';
 import Admin from '../../layouts/Admin';
 import {
@@ -25,11 +25,39 @@ import {
 import { MealProps } from '../../components/Meal';
 import { WeightProps } from '../../components/Weight';
 import PropTypes from 'prop-types';
+import { User } from 'next-auth';
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
+  const session = await getSession({ req });
+
+  let user = null;
+  if (!session) {
+    user = await prisma.user.findUnique({
+      where: {
+        id: Number(params?.id),
+      },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+      },
+    });
+  } else {
+    user = await prisma.user.findUnique({
+      where: {
+        email: session.user.email,
+      },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+      },
+    });
+  }
+
   const meals = await prisma.meal.findMany({
     where: {
-      user: { id: Number(params?.id) },
+      user: { id: user ? user.id : -1 },
     },
     select: {
       food: true,
@@ -43,7 +71,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
   const weights = await prisma.weight.findMany({
     where: {
-      user: { id: Number(params?.id) },
+      user: { id: user ? user.id : -1 },
     },
     select: {
       pounds: true,
@@ -51,21 +79,35 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     },
   });
   return {
-    props: { meals, weights },
+    props: { meals, weights, user },
   };
 };
 
 type Props = {
   meals: MealProps[];
   weights: WeightProps[];
+  user: User;
 };
 
 const Summary: React.FC<Props> = props => {
-  const { meals, weights } = props;
+  const { meals, weights, user } = props;
+
+  if (!user) {
+    return (
+      <Layout>
+        <Container>
+          <Row className="flex-column align-items-center justify-content-center">
+            <h1 className="text-black-50 text-center">Whoops!</h1>
+            <p className="text-black-50 text-center">There is no user with this id.</p>
+          </Row>
+        </Container>
+      </Layout>
+    );
+  }
 
   return (
     <Admin>
-      <SummaryHeader meals={meals} weights={weights} />
+      <SummaryHeader meals={meals} weights={weights} user={user} />
       {/* Page content */}
       <Container className="mt--7" fluid>
         {/* Meals Table */}
