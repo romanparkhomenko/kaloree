@@ -19,6 +19,8 @@ import AddWeight from '../Forms/AddWeight';
 import AddWorkout from '../Forms/AddWorkout';
 import prisma from '../../lib/prisma';
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const FriendsHeader: React.FC = ({ handleFriends }) => {
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState('');
