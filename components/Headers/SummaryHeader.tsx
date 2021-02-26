@@ -43,7 +43,11 @@ const SummaryHeader: React.FC<Props> = ({ meals, weights, user, workouts }) => {
     });
 
     const calorieGoal = allMeals.map(meal => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       if (meal.ounces && user.caloriegoal) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         return user.caloriegoal;
       }
     });
@@ -88,7 +92,11 @@ const SummaryHeader: React.FC<Props> = ({ meals, weights, user, workouts }) => {
     });
 
     const weightGoal = allWeights.map(weight => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       if (weight.pounds && user.weightgoal) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         return user.weightgoal;
       }
     });

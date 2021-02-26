@@ -66,6 +66,8 @@ const FriendsHeader: React.FC = ({ handleFriends }) => {
       })
         .then(res => res.json())
         .then(response => {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           const friend = searchResults.find(element => element.id === friendId);
           handleFriends(friend);
           console.info(response);
@@ -80,6 +82,8 @@ const FriendsHeader: React.FC = ({ handleFriends }) => {
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   return (
     <>
       <div className="header bg-gradient-dark pb-8 pt-5 pt-md-8">
@@ -129,29 +133,30 @@ const FriendsHeader: React.FC = ({ handleFriends }) => {
                         </tr>
                       </thead>
                       <tbody>
-                        {searchResults &&
-                          searchResults.map(searchResult => (
-                            <tr key={`user-${searchResult.id}`}>
-                              <td>
-                                <img
-                                  alt="..."
-                                  className="rounded-circle"
-                                  src={require('assets/img/theme/profile-placeholder.png')}
-                                  style={{ maxWidth: '25px' }}
-                                />
-                              </td>
-                              <td>{searchResult.name ? searchResult.name : 'No Name'}</td>
-                              <td>{searchResult.email}</td>
-                              <td>
-                                <button
-                                  className="btn btn-primary bg-gradient-orange w-auto"
-                                  onClick={e => addFriend(e, searchResult.id)}
-                                >
-                                  Add friend
-                                </button>
-                              </td>
-                            </tr>
-                          ))}
+                        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                        {/*// @ts-ignore*/}
+                        {searchResults.map(searchResult => (
+                          <tr key={`user-${searchResult.id}`}>
+                            <td>
+                              <img
+                                alt="..."
+                                className="rounded-circle"
+                                src={require('assets/img/theme/profile-placeholder.png')}
+                                style={{ maxWidth: '25px' }}
+                              />
+                            </td>
+                            <td>{searchResult.name ? searchResult.name : 'No Name'}</td>
+                            <td>{searchResult.email}</td>
+                            <td>
+                              <button
+                                className="btn btn-primary bg-gradient-orange w-auto"
+                                onClick={e => addFriend(e, searchResult.id)}
+                              >
+                                Add friend
+                              </button>
+                            </td>
+                          </tr>
+                        ))}
                       </tbody>
                     </Table>
                   ) : (
