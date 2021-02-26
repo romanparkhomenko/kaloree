@@ -1,5 +1,5 @@
-import React from "react";
-import Router from "next/router";
+import React from 'react';
+import Router from 'next/router';
 
 export type MealProps = {
   date: string | null;
@@ -14,7 +14,7 @@ export type MealProps = {
 
 const Meal: React.FC<{ meal: MealProps }> = ({ meal }) => {
   return (
-    <div onClick={() => Router.push("/p/[id]", `/p/${meal.id}`)}>
+    <div onClick={() => Router.push('/p/[id]', `/p/${meal.id}`)}>
       <h2>Food: {meal.food}</h2>
       <h2>Category: {meal.foodCategory}</h2>
       <h3>Grams: {meal.grams}</h3>

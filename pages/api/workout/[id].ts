@@ -1,11 +1,11 @@
 import prisma from '../../../lib/prisma';
 
-// DELETE /api/post/:id
+// DELETE /api/workout/:id
 export default async function handle(req, res) {
-  const weightId = req.query.id;
+  const workoutId = req.query.id;
   if (req.method === 'DELETE') {
-    const post = await prisma.weight.delete({
-      where: { id: Number(weightId) },
+    const post = await prisma.workout.delete({
+      where: { id: Number(workoutId) },
     });
     res.json(post);
   } else {

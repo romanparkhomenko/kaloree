@@ -3,16 +3,19 @@ import { getSession } from 'next-auth/client';
 import moment from 'moment';
 
 // POST /api/post
-// Required fields in body: food, foodCategory
-// Optional fields in body: grams, ounces, calories,
+// Required fields in body: workout
+// Optional fields in body: minutes, weight, caloriesBurnt,
 export default async function handle(req, res) {
-  const { pounds } = req.body;
+  const { workout, minutes, caloriesBurnt, weight } = req.body;
 
   const session = await getSession({ req });
 
-  const result = await prisma.weight.create({
+  const result = await prisma.workout.create({
     data: {
-      pounds: parseInt(pounds),
+      workout: workout,
+      minutes: parseInt(minutes),
+      caloriesBurnt: parseInt(caloriesBurnt),
+      weight: parseInt(weight),
       user: { connect: { email: session?.user?.email } },
       date: moment().format('l'),
     },

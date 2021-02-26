@@ -6,16 +6,31 @@ import moment from 'moment';
 // Required fields in body: food, foodCategory
 // Optional fields in body: grams, ounces, calories,
 export default async function handle(req, res) {
-  const { pounds } = req.body;
+  const { search } = req.body;
 
   const session = await getSession({ req });
 
-  const result = await prisma.weight.create({
-    data: {
-      pounds: parseInt(pounds),
-      user: { connect: { email: session?.user?.email } },
-      date: moment().format('l'),
+  const result = await prisma.user.findMany({
+    where: {
+      OR: [
+        {
+          name: {
+            contains: search,
+          },
+        },
+        {
+          email: {
+            contains: search,
+          },
+        },
+      ],
+    },
+    select: {
+      id: true,
+      name: true,
+      email: true,
     },
   });
+
   res.json(result);
 }

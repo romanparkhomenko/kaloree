@@ -6,15 +6,14 @@ import moment from 'moment';
 // Required fields in body: food, foodCategory
 // Optional fields in body: grams, ounces, calories,
 export default async function handle(req, res) {
-  const { pounds } = req.body;
+  const { friendId } = req.body;
 
   const session = await getSession({ req });
 
-  const result = await prisma.weight.create({
+  const result = await prisma.friends.create({
     data: {
-      pounds: parseInt(pounds),
+      friendId: parseInt(friendId),
       user: { connect: { email: session?.user?.email } },
-      date: moment().format('l'),
     },
   });
   res.json(result);

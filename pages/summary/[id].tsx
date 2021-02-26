@@ -24,6 +24,7 @@ import {
 } from 'reactstrap';
 import { MealProps } from '../../components/Meal';
 import { WeightProps } from '../../components/Weight';
+import { WorkoutProps } from '../../components/Workout';
 import PropTypes from 'prop-types';
 import { User } from 'next-auth';
 
@@ -40,6 +41,8 @@ export const getServerSideProps: GetServerSideProps = async ({ req, params }) =>
         id: true,
         name: true,
         email: true,
+        caloriegoal: true,
+        weightgoal: true,
       },
     });
   } else {
@@ -78,8 +81,22 @@ export const getServerSideProps: GetServerSideProps = async ({ req, params }) =>
       date: true,
     },
   });
+
+  const workouts = await prisma.workout.findMany({
+    where: {
+      user: { id: user ? user.id : -1 },
+    },
+    select: {
+      workout: true,
+      minutes: true,
+      caloriesBurnt: true,
+      weight: true,
+      date: true,
+    },
+  });
+
   return {
-    props: { meals, weights, user },
+    props: { meals, weights, user, workouts },
   };
 };
 
@@ -87,10 +104,11 @@ type Props = {
   meals: MealProps[];
   weights: WeightProps[];
   user: User;
+  workouts: WorkoutProps[];
 };
 
 const Summary: React.FC<Props> = props => {
-  const { meals, weights, user } = props;
+  const { meals, weights, user, workouts } = props;
 
   if (!user) {
     return (
@@ -107,7 +125,7 @@ const Summary: React.FC<Props> = props => {
 
   return (
     <Admin>
-      <SummaryHeader meals={meals} weights={weights} user={user} />
+      <SummaryHeader meals={meals} weights={weights} user={user} workouts={workouts} />
       {/* Page content */}
       <Container className="mt--7" fluid>
         {/* Meals Table */}
@@ -141,6 +159,43 @@ const Summary: React.FC<Props> = props => {
                           <td>{meal.ounces}oz</td>
                           <td>{meal.calories}cals</td>
                           <td>{meal.date}</td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </Table>
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+        {/* Workout Table */}
+        <Row className="mt-3">
+          <Col className="mb-5 mb-xl-0" xl="12">
+            <Card className="shadow">
+              <CardHeader className="border-0">
+                <div className="col">
+                  <h3 className="mb-0">My Workouts</h3>
+                </div>
+              </CardHeader>
+              <CardBody>
+                <Table className="align-items-center table-flush" responsive>
+                  <thead className="thead-light">
+                    <tr>
+                      <th scope="col">Workout</th>
+                      <th scope="col">Minutes</th>
+                      <th scope="col">Calories Burnt</th>
+                      <th scope="col">Weight</th>
+                      <th scope="col">Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {workouts &&
+                      workouts.map(workout => (
+                        <tr key={`workout-${workout.id}`}>
+                          <td>{workout.workout}</td>
+                          <td>{workout.minutes}min</td>
+                          <td>{workout.caloriesBurnt}cal</td>
+                          <td>{workout.weight}lbs</td>
+                          <td>{workout.date}</td>
                         </tr>
                       ))}
                   </tbody>

@@ -34,6 +34,42 @@ model Meal {
   @@index([userId], name: "userId")
 }
 
+model Workout {
+  id           Int      @id @default(autoincrement())
+  workout      String
+  minutes      Int?
+  caloriesBurnt     Int?
+  weight       Int?
+  userId       Int?
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @default(now()) @map("updated_at")
+  date         String?
+  user         User?    @relation(fields: [userId], references: [id])
+
+  @@index([userId], name: "userId")
+}
+
+model Friends {
+  id           Int      @id @default(autoincrement())
+  userId       Int?
+  friendId     Int?
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @default(now()) @map("updated_at")
+  user         User?    @relation(fields: [userId], references: [id])
+
+  @@index([userId], name: "userId")
+}
+
+model Comments {
+  id        Int     @id @default(autoincrement())
+  content   String?
+  authorId  Int?
+  profileId Int?
+  author    User?   @relation(fields: [authorId], references: [id])
+
+  @@index([authorId], name: "authorId")
+}
+
 model Weight {
   id        Int      @id @default(autoincrement())
   pounds    Int
@@ -50,13 +86,19 @@ model User {
   id            Int       @id @default(autoincrement())
   name          String?
   email         String?   @unique
+  password      String?
   emailVerified DateTime? @map("email_verified")
   image         String?
+  caloriegoal   Int?
+  weightgoal    Int?
   createdAt     DateTime  @default(now()) @map("created_at")
   updatedAt     DateTime  @updatedAt @map("updated_at")
   Meal          Meal[]
   posts         Post[]
   Weight        Weight[]
+  Friends       Friends[]
+  Comments      Comments[]
+  Workout       Workout[]
 
   @@map("users")
 }

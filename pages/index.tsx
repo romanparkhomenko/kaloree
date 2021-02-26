@@ -1,6 +1,5 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
-import Router, { useRouter } from 'next/router';
 import { MealProps } from '../components/Meal';
 import prisma from '../lib/prisma';
 import { getSession, useSession } from 'next-auth/client';
@@ -32,7 +31,14 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const session = await getSession({ req });
   if (!session) {
     res.statusCode = 403;
-    return { props: { meals: [] } };
+    // return { props: { meals: [] } };
+
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
   }
 
   const meals = await prisma.meal.findMany({
@@ -61,6 +67,7 @@ const Home: React.FC<Props> = props => {
   const { meals } = props;
 
   const [session] = useSession();
+
   if (!session) {
     return (
       <Layout>

@@ -6,15 +6,19 @@ import moment from 'moment';
 // Required fields in body: food, foodCategory
 // Optional fields in body: grams, ounces, calories,
 export default async function handle(req, res) {
-  const { pounds } = req.body;
+  const { name, weightGoal, calorieGoal, email } = req.body;
 
   const session = await getSession({ req });
 
-  const result = await prisma.weight.create({
+  const result = await prisma.user.update({
+    where: {
+      email: session?.user?.email,
+    },
     data: {
-      pounds: parseInt(pounds),
-      user: { connect: { email: session?.user?.email } },
-      date: moment().format('l'),
+      name: name,
+      weightgoal: parseInt(weightGoal),
+      caloriegoal: parseInt(calorieGoal),
+      email: email,
     },
   });
   res.json(result);

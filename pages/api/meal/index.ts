@@ -1,7 +1,6 @@
-import prisma from '../../../lib/prisma'
-import { getSession } from "next-auth/client";
-import moment from "moment";
-
+import prisma from '../../../lib/prisma';
+import { getSession } from 'next-auth/client';
+import moment from 'moment';
 
 // POST /api/post
 // Required fields in body: food, foodCategory
@@ -11,10 +10,10 @@ export default async function handle(req, res) {
 
   const session = await getSession({ req });
 
-  const getFloatNumber = (num) => {
+  const getFloatNumber = num => {
     const stringValue = parseFloat(num).toFixed(2);
     return parseFloat(stringValue);
-  }
+  };
 
   const result = await prisma.meal.create({
     data: {

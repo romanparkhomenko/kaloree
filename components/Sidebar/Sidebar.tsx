@@ -1,7 +1,7 @@
 /*eslint-disable*/
-import React from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import React from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 // nodejs library to set properties for components
 
 // reactstrap components
@@ -33,8 +33,8 @@ import {
   Container,
   Row,
   Col,
-} from "reactstrap";
-import {useSession} from "next-auth/client";
+} from 'reactstrap';
+import { useSession } from 'next-auth/client';
 
 var ps;
 
@@ -43,7 +43,7 @@ function Sidebar(props) {
   const router = useRouter();
   const [collapseOpen, setCollapseOpen] = React.useState(false);
   // verifies if routeName is the one active (in browser input)
-  const activeRoute = (routeName) => {
+  const activeRoute = routeName => {
     return router.route.indexOf(routeName) > -1;
   };
   // toggles collapse between opened and closed (true/false)
@@ -70,11 +70,7 @@ function Sidebar(props) {
     >
       <Container fluid>
         {/* Toggler */}
-        <button
-          className="navbar-toggler"
-          type="button"
-          onClick={toggleCollapse}
-        >
+        <button className="navbar-toggler" type="button" onClick={toggleCollapse}>
           <span className="navbar-toggler-icon" />
         </button>
         {/* Brand */}
@@ -109,10 +105,7 @@ function Sidebar(props) {
             <DropdownToggle nav>
               <Media className="align-items-center">
                 <span className="avatar avatar-sm rounded-circle">
-                  <img
-                    alt="..."
-                    src={require("assets/img/theme/team-1-800x800.jpg")}
-                  />
+                  <img alt="..." src={require('assets/img/theme/team-1-800x800.jpg')} />
                 </span>
               </Media>
             </DropdownToggle>
@@ -145,7 +138,7 @@ function Sidebar(props) {
                 </DropdownItem>
               </Link>
               <DropdownItem divider />
-              <DropdownItem href="#roman" onClick={(e) => e.preventDefault()}>
+              <DropdownItem href="#roman" onClick={e => e.preventDefault()}>
                 <i className="ni ni-user-run" />
                 <span>Logout</span>
               </DropdownItem>
@@ -173,11 +166,7 @@ function Sidebar(props) {
                 </Col>
               ) : null}
               <Col className="collapse-close" xs="6">
-                <button
-                  className="navbar-toggler"
-                  type="button"
-                  onClick={toggleCollapse}
-                >
+                <button className="navbar-toggler" type="button" onClick={toggleCollapse}>
                   <span />
                   <span />
                 </button>
@@ -205,9 +194,9 @@ function Sidebar(props) {
             <NavItem active={activeRoute('/')}>
               <Link href="/">
                 <NavLink
-                    active={activeRoute('/')}
-                    onClick={closeCollapse}
-                    style={{cursor: 'pointer'}}
+                  active={activeRoute('/')}
+                  onClick={closeCollapse}
+                  style={{ cursor: 'pointer' }}
                 >
                   <i className="ni ni-tv-2 text-primary" />
                   Dashboard
@@ -217,12 +206,36 @@ function Sidebar(props) {
             <NavItem active={activeRoute('/summary')}>
               <Link href={`/summary/1`}>
                 <NavLink
-                    active={activeRoute('/summary')}
-                    onClick={closeCollapse}
-                    style={{cursor: 'pointer'}}
+                  active={activeRoute('/summary')}
+                  onClick={closeCollapse}
+                  style={{ cursor: 'pointer' }}
                 >
-                  <i className="ni ni-planet text-blue" />
+                  <i className="ni ni-planet text-orange" />
                   Summary
+                </NavLink>
+              </Link>
+            </NavItem>
+            <NavItem active={activeRoute('/profile')}>
+              <Link href={`/profile`}>
+                <NavLink
+                  active={activeRoute('/profile')}
+                  onClick={closeCollapse}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <i className="ni ni-circle-08 text-cyan" />
+                  Profile
+                </NavLink>
+              </Link>
+            </NavItem>
+            <NavItem active={activeRoute('/friends')}>
+              <Link href={`/friends`}>
+                <NavLink
+                  active={activeRoute('/friends')}
+                  onClick={closeCollapse}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <i className="ni ni-satisfied text-indigo" />
+                  Friends
                 </NavLink>
               </Link>
             </NavItem>
