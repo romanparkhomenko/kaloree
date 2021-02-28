@@ -111,7 +111,7 @@ type Props = {
 };
 
 const Summary: React.FC<Props> = props => {
-  const { meals, weights, workouts, user } = props;
+  const { meals, weights, user, workouts } = props;
 
   if (!user) {
     return (
