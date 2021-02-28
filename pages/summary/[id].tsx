@@ -32,7 +32,8 @@ export const getServerSideProps: GetServerSideProps = async ({ req, params }) =>
   const session = await getSession({ req });
 
   let user = null;
-  if (!session) {
+
+  if (params?.id) {
     user = await prisma.user.findUnique({
       where: {
         id: Number(params?.id),
@@ -48,12 +49,14 @@ export const getServerSideProps: GetServerSideProps = async ({ req, params }) =>
   } else {
     user = await prisma.user.findUnique({
       where: {
-        email: session.user.email,
+        email: session ? session.user.email : 'rsparkhomenko@gmail.com',
       },
       select: {
         id: true,
         name: true,
         email: true,
+        caloriegoal: true,
+        weightgoal: true,
       },
     });
   }

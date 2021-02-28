@@ -38,7 +38,7 @@ import { useSession } from 'next-auth/client';
 
 var ps;
 
-function Sidebar(props) {
+const Sidebar: React.FC = props => {
   // used for checking current route
   const router = useRouter();
   const [collapseOpen, setCollapseOpen] = React.useState(false);
@@ -55,7 +55,8 @@ function Sidebar(props) {
     setCollapseOpen(false);
   };
   const [session] = useSession();
-  const { routes, logo } = props;
+  // @ts-ignore
+  const { logo } = props;
   let navbarBrand = (
     <NavbarBrand href="#roman" className="pt-0">
       {/*<img alt={logo.imgAlt} className="navbar-brand-img" src={logo.imgSrc} />*/}
@@ -204,7 +205,7 @@ function Sidebar(props) {
               </Link>
             </NavItem>
             <NavItem active={activeRoute('/summary')}>
-              <Link href={`/summary/1`}>
+              <Link href={`/summary`}>
                 <NavLink
                   active={activeRoute('/summary')}
                   onClick={closeCollapse}
@@ -244,27 +245,6 @@ function Sidebar(props) {
       </Container>
     </Navbar>
   );
-}
-
-// Sidebar.defaultProps = {
-//   routes: [{}],
-// };
-//
-// Sidebar.propTypes = {
-//   // links that will be displayed inside the component
-//   routes: PropTypes.arrayOf(PropTypes.object),
-//   logo: PropTypes.shape({
-//     // innerLink is for links that will direct the user within the app
-//     // it will be rendered as <Link href="...">...</Link> tag
-//     innerLink: PropTypes.string,
-//     // outterLink is for links that will direct the user outside the app
-//     // it will be rendered as simple <a href="...">...</a> tag
-//     outterLink: PropTypes.string,
-//     // the image src of the logo
-//     imgSrc: PropTypes.string.isRequired,
-//     // the alt for the img
-//     imgAlt: PropTypes.string.isRequired,
-//   }),
-// };
+};
 
 export default Sidebar;
