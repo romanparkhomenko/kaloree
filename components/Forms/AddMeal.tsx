@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import { Card, CardBody, CardTitle, Container, Row, Col, Form, FormGroup, Input } from 'reactstrap';
-import Router, { useRouter } from 'next/router';
 
 const AddMeal: React.FC = () => {
   const [food, setFood] = useState('');

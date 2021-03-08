@@ -1,0 +1,299 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add Meal Form renders correctly 1`] = `
+<div
+  className="card-stats mb-4 mb-xl-0 card"
+>
+  <div
+    className="card-body"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <form
+          className=""
+        >
+          <div
+            className="align-items-center justify-content-between row col-lg-12"
+          >
+            <h6
+              className="heading-small text-muted mb-4"
+            >
+              Log a Meal
+            </h6>
+            <span
+              className="icon icon-shape bg-gradient-info text-white rounded-circle shadow"
+            >
+              <i
+                className="fas fa-chart-bar"
+              />
+            </span>
+          </div>
+          <div
+            className="row"
+          >
+            <div
+              className="col-lg-12"
+            >
+              <label
+                className="form-control-label"
+                htmlFor="food"
+              >
+                Food
+              </label>
+              <input
+                className="form-control-alternative form-control"
+                id="food"
+                onChange={[Function]}
+                placeholder="What did you eat?"
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              className="col-lg-12"
+            >
+              <label
+                className="form-control-label"
+                htmlFor="foodCategory"
+              >
+                Food Category
+              </label>
+              <input
+                className="form-control-alternative form-control"
+                id="foodCategory"
+                onChange={[Function]}
+                placeholder="Carbs, Fruit, Fats..."
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              className="col-lg-12"
+            >
+              <label
+                className="form-control-label"
+                htmlFor="grams"
+              >
+                Grams
+              </label>
+              <input
+                className="form-control-alternative form-control"
+                id="grams"
+                onChange={[Function]}
+                placeholder="Grams"
+                type="number"
+                value=""
+              />
+            </div>
+            <div
+              className="col-lg-6"
+            >
+              <label
+                className="form-control-label"
+                htmlFor="ounces"
+              >
+                Ounces
+              </label>
+              <input
+                className="form-control-alternative form-control"
+                id="ounces"
+                onChange={[Function]}
+                placeholder="Ounces"
+                type="number"
+                value=""
+              />
+            </div>
+            <div
+              className="col-lg-6"
+            >
+              <label
+                className="form-control-label"
+                htmlFor="calories"
+              >
+                Calories
+              </label>
+              <input
+                className="form-control-alternative form-control"
+                id="calories"
+                onChange={[Function]}
+                placeholder="Calories"
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            className="align-items-center justify-content-end row"
+          >
+            <div
+              className="mt-3 col-lg-12"
+            >
+              <button
+                className="btn btn-info bg-gradient-info w-100"
+                onClick={[Function]}
+              >
+                Log My Meal
+              </button>
+              
+              
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`AddMeal form renders 1`] = `
+<div
+  className="card-stats mb-4 mb-xl-0 card"
+>
+  <div
+    className="card-body"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <form
+          className=""
+        >
+          <div
+            className="align-items-center justify-content-between row col-lg-12"
+          >
+            <h6
+              className="heading-small text-muted mb-4"
+            >
+              Log a Meal
+            </h6>
+            <span
+              className="icon icon-shape bg-gradient-info text-white rounded-circle shadow"
+            >
+              <i
+                className="fas fa-chart-bar"
+              />
+            </span>
+          </div>
+          <div
+            className="row"
+          >
+            <div
+              className="col-lg-12"
+            >
+              <label
+                className="form-control-label"
+                htmlFor="food"
+              >
+                Food
+              </label>
+              <input
+                className="form-control-alternative form-control"
+                id="food"
+                onChange={[Function]}
+                placeholder="What did you eat?"
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              className="col-lg-12"
+            >
+              <label
+                className="form-control-label"
+                htmlFor="foodCategory"
+              >
+                Food Category
+              </label>
+              <input
+                className="form-control-alternative form-control"
+                id="foodCategory"
+                onChange={[Function]}
+                placeholder="Carbs, Fruit, Fats..."
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              className="col-lg-12"
+            >
+              <label
+                className="form-control-label"
+                htmlFor="grams"
+              >
+                Grams
+              </label>
+              <input
+                className="form-control-alternative form-control"
+                id="grams"
+                onChange={[Function]}
+                placeholder="Grams"
+                type="number"
+                value=""
+              />
+            </div>
+            <div
+              className="col-lg-6"
+            >
+              <label
+                className="form-control-label"
+                htmlFor="ounces"
+              >
+                Ounces
+              </label>
+              <input
+                className="form-control-alternative form-control"
+                id="ounces"
+                onChange={[Function]}
+                placeholder="Ounces"
+                type="number"
+                value=""
+              />
+            </div>
+            <div
+              className="col-lg-6"
+            >
+              <label
+                className="form-control-label"
+                htmlFor="calories"
+              >
+                Calories
+              </label>
+              <input
+                className="form-control-alternative form-control"
+                id="calories"
+                onChange={[Function]}
+                placeholder="Calories"
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            className="align-items-center justify-content-end row"
+          >
+            <div
+              className="mt-3 col-lg-12"
+            >
+              <button
+                className="btn btn-info bg-gradient-info w-100"
+                onClick={[Function]}
+              >
+                Log My Meal
+              </button>
+              
+              
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
