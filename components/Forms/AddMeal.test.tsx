@@ -38,7 +38,7 @@ describe('Add Meal Form', () => {
     fireEvent.change(caloriesInput, { target: { value: '300' } });
     expect(caloriesInput).toHaveValue(300);
 
-    const fakeWeightResponse = { okay: 'weight logged' };
+    const fakeWeightResponse = { okay: 'meal logged' };
 
     global.fetch = jest.fn().mockImplementation(() => {
       return Promise.resolve({

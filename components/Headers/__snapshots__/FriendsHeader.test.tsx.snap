@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Friends Page Header renders correctly 1`] = `
+<div
+  className="header bg-gradient-dark pb-8 pt-5 pt-md-8"
+>
+  <div
+    className="container-fluid"
+  >
+    <div
+      className="header-body"
+    >
+      <div
+        className="card"
+      >
+        <div
+          className="card-body"
+        >
+          <div
+            className="align-items-end row"
+          >
+            <div
+              className="col-lg-8 col-xl-8"
+            >
+              <label
+                className="form-control-label"
+                htmlFor="search"
+              >
+                Search For Friends
+              </label>
+              <input
+                className="form-control-alternative form-control"
+                id="search"
+                onChange={[Function]}
+                placeholder="Search name or email"
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              className="col-lg-4"
+            >
+              <button
+                className="btn btn-primary bg-gradient-primary mb-1 w-100"
+                data-testid="searchFriendsButton"
+                onClick={[Function]}
+              >
+                Search
+              </button>
+              
+              
+            </div>
+          </div>
+          <div
+            className="mt-4 mb-1 row"
+          >
+            <h3
+              className="text-center w-100 text-indigo my-1"
+            >
+              No Results Found
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

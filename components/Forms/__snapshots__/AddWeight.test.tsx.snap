@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add Weight Form renders correctly 1`] = `
+<div
+  className="card-stats mb-4 mb-xl-0 card"
+>
+  <div
+    className="card-body"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <form
+          className=""
+        >
+          <div
+            className="align-items-center justify-content-between row col-lg-12"
+          >
+            <h6
+              className="heading-small text-muted mb-4"
+            >
+              Log your Weight
+            </h6>
+            <span
+              className="icon icon-shape bg-gradient-primary text-white rounded-circle shadow"
+            >
+              <i
+                className="ni ni-active-40"
+              />
+            </span>
+          </div>
+          <div
+            className="align-items-end row"
+          >
+            <div
+              className="col-lg-12"
+            >
+              <label
+                className="form-control-label"
+                htmlFor="pounds"
+              >
+                Weight
+              </label>
+              <input
+                className="form-control-alternative form-control"
+                id="pounds"
+                onChange={[Function]}
+                placeholder="How much do you weigh?"
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            className="align-items-center justify-content-end row"
+          >
+            <div
+              className="mt-3 col-lg-12"
+            >
+              <button
+                className="btn btn-primary bg-gradient-primary mb-1 w-100"
+                onClick={[Function]}
+              >
+                Log My Weight
+              </button>
+              
+              
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;

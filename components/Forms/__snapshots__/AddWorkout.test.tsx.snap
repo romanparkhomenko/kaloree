@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Add Meal Form renders correctly 1`] = `
+exports[`Add Workout Form renders correctly 1`] = `
 <div
   className="card-stats mb-4 mb-xl-0 card"
 >
@@ -22,13 +22,13 @@ exports[`Add Meal Form renders correctly 1`] = `
             <h6
               className="heading-small text-muted mb-4"
             >
-              Log a Meal
+              Log a Workout
             </h6>
             <span
-              className="icon icon-shape bg-gradient-info text-white rounded-circle shadow"
+              className="icon icon-shape bg-gradient-orange text-white rounded-circle shadow"
             >
               <i
-                className="fas fa-chart-bar"
+                className="ni ni-user-run"
               />
             </span>
           </div>
@@ -40,15 +40,15 @@ exports[`Add Meal Form renders correctly 1`] = `
             >
               <label
                 className="form-control-label"
-                htmlFor="food"
+                htmlFor="workout"
               >
-                Food
+                Workout
               </label>
               <input
                 className="form-control-alternative form-control"
-                id="food"
+                id="workout"
                 onChange={[Function]}
-                placeholder="What did you eat?"
+                placeholder="What kind of workout did you do?"
                 type="text"
                 value=""
               />
@@ -58,16 +58,16 @@ exports[`Add Meal Form renders correctly 1`] = `
             >
               <label
                 className="form-control-label"
-                htmlFor="foodCategory"
+                htmlFor="minutes"
               >
-                Food Category
+                Minutes
               </label>
               <input
                 className="form-control-alternative form-control"
-                id="foodCategory"
+                id="minutes"
                 onChange={[Function]}
-                placeholder="Carbs, Fruit, Fats..."
-                type="text"
+                placeholder="How long did you workout?"
+                type="number"
                 value=""
               />
             </div>
@@ -76,51 +76,33 @@ exports[`Add Meal Form renders correctly 1`] = `
             >
               <label
                 className="form-control-label"
-                htmlFor="grams"
+                htmlFor="caloriesBurnt"
               >
-                Grams
+                Calories Burnt
               </label>
               <input
                 className="form-control-alternative form-control"
-                id="grams"
+                id="caloriesBurnt"
                 onChange={[Function]}
-                placeholder="Grams"
+                placeholder="Calories Burnt"
                 type="number"
                 value=""
               />
             </div>
             <div
-              className="col-lg-6"
+              className="col-lg-12"
             >
               <label
                 className="form-control-label"
-                htmlFor="ounces"
+                htmlFor="weight"
               >
-                Ounces
+                Weight
               </label>
               <input
                 className="form-control-alternative form-control"
-                id="ounces"
+                id="weight"
                 onChange={[Function]}
-                placeholder="Ounces"
-                type="number"
-                value=""
-              />
-            </div>
-            <div
-              className="col-lg-6"
-            >
-              <label
-                className="form-control-label"
-                htmlFor="calories"
-              >
-                Calories
-              </label>
-              <input
-                className="form-control-alternative form-control"
-                id="calories"
-                onChange={[Function]}
-                placeholder="Calories"
+                placeholder="How much weight did you lift?"
                 type="number"
                 value=""
               />
@@ -133,10 +115,10 @@ exports[`Add Meal Form renders correctly 1`] = `
               className="mt-3 col-lg-12"
             >
               <button
-                className="btn btn-info bg-gradient-info w-100"
+                className="btn btn-info bg-gradient-orange w-100"
                 onClick={[Function]}
               >
-                Log My Meal
+                Log My Workout
               </button>
               
               

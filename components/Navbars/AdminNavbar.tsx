@@ -19,6 +19,7 @@ import {
 } from 'reactstrap';
 import { useRouter } from 'next/router';
 import { signOut, useSession } from 'next-auth/client';
+import Image from 'next/image';
 
 const AdminNavbar: React.FC = () => {
   const router = useRouter();
@@ -38,7 +39,13 @@ const AdminNavbar: React.FC = () => {
               <DropdownToggle className="pr-0" nav>
                 <Media className="align-items-center">
                   <span className="avatar avatar-sm rounded-circle">
-                    <img alt="..." src={require('assets/img/theme/profile-placeholder.png')} />
+                    <Image
+                      src="/profile-placeholder.png"
+                      alt="..."
+                      width="25"
+                      height="25"
+                      className="rounded-circle"
+                    />
                   </span>
                   <Media className="ml-2 d-none d-lg-block">
                     <span className="mb-0 text-sm font-weight-bold">

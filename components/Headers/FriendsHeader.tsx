@@ -13,11 +13,7 @@ import {
   Input,
   Table,
 } from 'reactstrap';
-
-import AddMeal from '../Forms/AddMeal';
-import AddWeight from '../Forms/AddWeight';
-import AddWorkout from '../Forms/AddWorkout';
-import prisma from '../../lib/prisma';
+import Image from 'next/image';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -110,6 +106,7 @@ const FriendsHeader: React.FC = ({ handleFriends }) => {
                     <button
                       className="btn btn-primary bg-gradient-primary mb-1 w-100"
                       onClick={e => searchForFriends(e)}
+                      data-testid="searchFriendsButton"
                     >
                       Search
                     </button>
@@ -138,11 +135,12 @@ const FriendsHeader: React.FC = ({ handleFriends }) => {
                         {searchResults.map(searchResult => (
                           <tr key={`user-${searchResult.id}`}>
                             <td>
-                              <img
+                              <Image
+                                src="/profile-placeholder.png"
                                 alt="..."
+                                width="25"
+                                height="25"
                                 className="rounded-circle"
-                                src={require('assets/img/theme/profile-placeholder.png')}
-                                style={{ maxWidth: '25px' }}
                               />
                             </td>
                             <td>{searchResult.name ? searchResult.name : 'No Name'}</td>
