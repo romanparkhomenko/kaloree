@@ -53,7 +53,11 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       calories: true,
       date: true,
     },
+    orderBy: {
+      createdAt: 'desc',
+    },
   });
+
   return {
     props: { meals },
   };

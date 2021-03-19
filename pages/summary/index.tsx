@@ -113,6 +113,18 @@ type Props = {
 const Summary: React.FC<Props> = props => {
   const { meals, weights, user, workouts } = props;
 
+  const reverseArray = arr => {
+    const newArray = [];
+    for (let i = arr.length - 1; i >= 0; i--) {
+      newArray.push(arr[i]);
+    }
+    return newArray;
+  };
+
+  const reversedMeals = reverseArray(meals);
+  const reversedWeights = reverseArray(weights);
+  const reversedWorkouts = reverseArray(workouts);
+
   if (!user) {
     return (
       <Layout>
@@ -153,8 +165,8 @@ const Summary: React.FC<Props> = props => {
                     </tr>
                   </thead>
                   <tbody>
-                    {meals &&
-                      meals.map(meal => (
+                    {reversedMeals &&
+                      reversedMeals.map(meal => (
                         <tr key={`meal-${meal.id}`}>
                           <td>{meal.food}</td>
                           <td>{meal.foodCategory}</td>
@@ -191,8 +203,8 @@ const Summary: React.FC<Props> = props => {
                     </tr>
                   </thead>
                   <tbody>
-                    {workouts &&
-                      workouts.map(workout => (
+                    {reversedWorkouts &&
+                      reversedWorkouts.map(workout => (
                         <tr key={`workout-${workout.id}`}>
                           <td>{workout.workout}</td>
                           <td>{workout.minutes}min</td>
@@ -225,8 +237,8 @@ const Summary: React.FC<Props> = props => {
                     </tr>
                   </thead>
                   <tbody>
-                    {weights &&
-                      weights.map(weight => (
+                    {reversedWeights &&
+                      reversedWeights.map(weight => (
                         <tr key={`weight-${weight.id}`}>
                           <td>{weight.pounds}lbs</td>
                           <td>{weight.date}</td>
